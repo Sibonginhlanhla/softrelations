@@ -1,0 +1,1 @@
+CREATE DATABASE SoftRelations IF NOT EXISTS;

@@ -7,11 +7,13 @@
 
 // example
 
-module.exports = function (_id, _firstname, _lastname, _role, _emailaddress, _country){
-    this.id = _id;
-    this.firstname = _firstname; 
-    this.lastname = _lastname;
-    this.role = _role;
-    this.emailaddress = _emailaddress;
-    this.country = _country;
+module.exports = class User {
+    constructor(_gid, _firstname, _lastname, _role, _emailaddress, _country){
+        this.gId = _gId;
+        this.userId
+        this.firstName = _firstname; 
+        this.lastName = _lastname;
+        this.role = _role;
+        this.emailAddress = _emailaddress;
+    }
 }

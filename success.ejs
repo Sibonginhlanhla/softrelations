@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Role</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa; /* Soft background color */
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+    .role-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 20px;
+    }
+    .role-tile {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background-color: #fff; /* White tile background */
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .role-tile:hover {
+      transform: scale(1.05);
+    }
+    .role-tile h3 {
+      margin-top: 0;
+    }
+    .role-tile p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4">Choose Your Role</h2>
+    <div class="role-tiles">
+      <div class="role-tile" onclick="selectRole('Admin')">
+        <h3 class="text-center">Admin</h3>
+        <p class="text-center">Manage Users & Permissions</p>
+      </div>
+      <div class="role-tile" onclick="selectRole('HR')">
+        <h3 class="text-center">HR</h3>
+        <p class="text-center">Full Access & Reporting</p>
+      </div>
+      <div class="role-tile" onclick="selectRole('Staff')">
+        <h3 class="text-center">Staff</h3>
+        <p class="text-center">Regular User Operations</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript to handle role selection -->
+  <script>
+    function selectRole(role) {
+      // Send selected role to server-side script for processing
+      // Redirect user to appropriate dashboard based on selected role
+      // Example: window.location.href = "process_role_selection.php?role=" + role;
+    }
+  </script>
+</body>
+</html>

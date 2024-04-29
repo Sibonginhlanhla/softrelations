@@ -6,8 +6,10 @@ var logger = require('morgan');
 
 // 1. Import routers/endpoints here
 var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 var adminIndexRouter = require('./routes/admin/index');
 var adminLogInRouter = require('./routes/admin/login');
+
 
 var app = express();
 
@@ -22,9 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 2. Add routers/ here , it's the endpoints
-// users
 app.use('/', indexRouter);
-//admin
+app.use('/users', usersRouter);
 app.use('/admin', adminIndexRouter);
 app.use('/admin', adminLogInRouter);
 

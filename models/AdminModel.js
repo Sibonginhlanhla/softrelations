@@ -5,13 +5,14 @@ const DB_NAME = './models/database/srdatabase.sqlite';
  * Schema for admin
  */
 
-module.exports = class AdminRepo{
-    #db;
+module.exports = class AdminModel{
+    #db; // private 
 
     constructor(){
         this.#db = new Database(DB_NAME);
-        console.log("db connected, from AdminRepo");
+        console.log("db connected, from AdminModel");
     }
+    
     /**
      * Verifies admin login details against database,
      * also updates admin status in database to logged in!
@@ -19,12 +20,16 @@ module.exports = class AdminRepo{
      * @param {string} password Admin's password
      * @returns {boolean} Returns true if correct log in details are provided, or false otherwise
      */
-    verifyPassword(adminId, password) {
-        // hash using MD5 algo (see /models/utils/)
+    verifyPassword(adminId, passwordHash) {
         // check details against db id & password
-
-        return {loginStatus: false};
+        const query = "SELECT * FROM admin WHERE adminId=? AND password=?";
+        const adminuser = this.#db.prepare(query).get(adminId, passwordHash);
+        if (adminuser){
+            return true;
+        }
+        return false;
     }
+    
     /**
      * Document here
      */
@@ -45,15 +50,6 @@ module.exports = class AdminRepo{
     addDefaultPermission(_userId, _role, _permissionName, _apiSubDirPath){
         // eg "view-all-timesheets" <=> "/timesheets/view/"
         return {message: "successs"}
-    }
-    // add more methods below
-    
-    /**
-     * Call this after you done with the operations in routes
-     */
-    closeDBConnection(){
-        this.#db.close();
-        console.log("db closed from AdminRepo");
     }
 
 }

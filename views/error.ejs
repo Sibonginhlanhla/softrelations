@@ -1,3 +1,20 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error | SoftRelations</title>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <%- include('./partials/bootstrap') %>
+
+</head>
+    <body>
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <div class="text-center shadow-lg w-75 text-wrap p-3 py-4 bg-danger-subtle ">
+                <h1>Oops...<%= message %></h1>
+                <h2><%= error.status %></h2>
+            </div>
+        </div>
+    </body>
+</html>

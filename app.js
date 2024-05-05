@@ -4,10 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// import middleware here
+const {userAuthenticate} = require('./middleware/userAuthenticate');
+
 // 1. Import routers/endpoints here
-var indexRouter = require('./routes/index');
-var adminIndexRouter = require('./routes/admin/index');
-var adminLogInRouter = require('./routes/admin/login');
+var usersRoutes = require('./routes/usersRoutes');
+var adminRouter = require('./routes/adminRoutes');
+var feedbackRoutes = require('./routes/feedbackRoutes');
+var bookingsRoutes = require('./routes/bookingsRoutes');
+var timesheetsRoutes = require('./routes/timesheetsRoutes');
+var tasksRoutes = require('./routes/tasksRoutes');
 
 var app = express();
 
@@ -21,13 +27,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 2. Add routers/ here , it's the endpoints
-// users
-app.use('/', indexRouter);
-//admin
-app.use('/admin', adminIndexRouter);
-app.use('/admin', adminLogInRouter);
-
+// 2. Add routes/endpoints here
+app.use('/admin', adminRouter);
+app.use('/', usersRoutes);
+app.use('/feedback', feedbackRoutes);
+app.use('/bookings', bookingsRoutes);
+app.use('/timesheets', timesheetsRoutes);
+app.use('/tasks', tasksRoutes);
 
 
 // catch 404 and forward to error handler

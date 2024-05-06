@@ -17,6 +17,7 @@ const post_admin_login = (req, res)=>{
     const password = req.body.password;
     
     const passwordhash = md5(password);
+    // access model here
     var correctLogin = adminModel.verifyPassword(adminid, passwordhash); //boolean
 
     // if correctLoogin ... add session cookie and redirect to to admin index page

@@ -5,7 +5,7 @@ const bookingsController = require('../controllers/bookingsController');
 
 // endpoints below
 router.get('/');
-router.get('/all');
+router.get('/all', bookingsController.get_all_bookings);
 router.get('/meals/');
 router.get('/meals/:meal_id');
 router.get('/meals/options');

@@ -40,10 +40,16 @@ const get_admin_accesscontrol_page = (req, res)=>{
     res.render('admin/accesscontrol');
 }
 
+const put_admin_logout = (req, res)=>{
+    res.clearCookie('admin-session');
+    res.redirect('/admin/login');
+}
+
 module.exports = {
     get_admin_dashboard,
     get_admin_login,
     post_admin_login,
     get_admin_manageusers_page,
-    get_admin_accesscontrol_page
+    get_admin_accesscontrol_page,
+    put_admin_logout
 }

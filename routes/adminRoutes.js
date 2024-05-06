@@ -6,7 +6,7 @@ const {adminAuthenticate} = require('../middleware/adminAuthenticate')
 router.get('/',adminAuthenticate, adminController.get_admin_dashboard);
 router.get('/login', adminController.get_admin_login);
 router.post('/login', adminController.post_admin_login);
-router.put('/logout');
+router.get('/logout', adminController.put_admin_logout);
 router.get('/user-management',adminAuthenticate, adminController.get_admin_manageusers_page);
 router.post('/user-add');
 router.delete('/user-remove/:user_id');

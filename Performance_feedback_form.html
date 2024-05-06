@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance Feedback</title>
+    <style>
+        /* Basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Employee Performance Feedback</h2>
+
+<form action="#" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" name="department" required>
+
+    <label for="responsibilities">Ability to Accomplish Responsibilities:</label>
+    <textarea id="responsibilities" name="responsibilities" rows="4" required></textarea>
+
+    <label for="goals">Goal Achievements:</label>
+    <textarea id="goals" name="goals" rows="4" required></textarea>
+
+    <label for="improvement">Suggested Areas of Improvement:</label>
+    <textarea id="improvement" name="improvement" rows="4" required></textarea>
+
+    <label for="values">Demonstration of Core Values:</label>
+    <textarea id="values" name="values" rows="4" required></textarea>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

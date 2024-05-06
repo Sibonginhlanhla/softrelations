@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftRelations | Sign In</title>
+    <%- include('./partials/bootstrap') %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="d-flex align-items-center justify-content-center flex-column bg-body-secondary vh-100   ">
+      <div class="text-center p-3 shadow-lg  ">
+        <h2>SoftRelations User Sign In</h2>
+      </div>
+      <br>
+      <br>
+      <script src="https://accounts.google.com/gsi/client" async></script>
+      <div id="g_id_onload"
+          data-client_id="587144032888-ccfl45cjta5qtgttasknd3n6mcn8sm92.apps.googleusercontent.com"
+          data-login_uri="https://softrelations1.azurewebsites.net/signin"
+          data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+          data-type="standard"
+          data-size="large"
+          data-theme="filled_black"
+          data-text="sign_in_with"
+          data-shape="rectangular"
+          data-logo_alignment="left">
+    </div>
+    
+  </body>
+</html>

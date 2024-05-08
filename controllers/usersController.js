@@ -34,11 +34,15 @@ const  post_user_signin_g_callback = (req, res, next)=>{
     verify()
     .then(()=>{
         // CAN ADD THE googleid INTO OUR DB, IF email ALSO MATCHES, THEN:
-        res.cookie('session-token', token, {httpOnly: true});
-        res.redirect('/'); // continue to dashboard
-
-        // OTHERWISE REDIRECT TO SIGN AGAIN
-        
+        const userRegisterSuccess = usersModel.registerUser(user.googleid, user.email);
+        if (userRegisterSuccess){
+            res.cookie('session-token', token, {httpOnly: true});
+            res.redirect('/'); // continue to dashboard
+        }
+        else{
+            // OTHERWISE REDIRECT TO SIGN AGAIN (either incorrect g account/error)
+            res.redirect('/signin');
+        }
     })
     .catch(()=>{
         res.redirect('/signin');

@@ -10,7 +10,7 @@ module.exports = class TimesheetsModel{
 
     constructor(){
         this.#db = new Database(DB_NAME);
-        console.log("db connected, from UserModel");
+        console.log("db connected, from TimesheetsModel");
     }
     // add methods here
 }

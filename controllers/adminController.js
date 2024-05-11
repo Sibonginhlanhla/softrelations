@@ -1,6 +1,7 @@
 const AdminModel = require("../models/AdminModel");
 const md5 = require('md5'); // to hash password before logging admin in
-const {createToken} = require('../utils/jwt-tokenizer')
+const {createToken} = require('../utils/jwt-tokenizer');
+const { response } = require("express");
 var adminModel = new AdminModel();
 
 const get_admin_dashboard = (req, res)=>{
@@ -45,11 +46,23 @@ const put_admin_logout = (req, res)=>{
     res.redirect('/admin/login');
 }
 
+const post_admin_adduser = (req, res)=>{
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const role = req.body.role;
+
+    const response = adminModel.addUser(firstName,lastName,email,role);
+
+    res.json(response);
+}
+
 module.exports = {
     get_admin_dashboard,
     get_admin_login,
     post_admin_login,
     get_admin_manageusers_page,
     get_admin_accesscontrol_page,
-    put_admin_logout
+    put_admin_logout,
+    post_admin_adduser
 }

@@ -7,6 +7,7 @@
     <title>SoftRelations Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <%- include('../partials/bootstrap') %>
+    <script src="/javascripts/manageusers.js"></script> 
 </head>
 
 <body>
@@ -16,8 +17,8 @@
     <div class="container-fluid mt-2">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 bg-primary-subtle">
-                    <h5>Add User</h5>
+                <div class="col-md-4 border-start border-bottom border-2">
+                    <h4>Add User</h4>
                     <form>
                         <div class="form-group">
                             <label for="firstNameInput">First name</label>
@@ -40,13 +41,13 @@
                             </select>
                         </div>
                     </form>
-                    <button class="btn btn-dark my-3 w-50 rounded-0">Add user</button>
+                    <button class="btn btn-dark my-3 w-50 rounded-0" onclick="onAddUser()">Add user</button>
                 </div>
-                <div class="col-md-4 bg-secondary-subtle ">
-                    Column
+                <div class="col-md-4 border-start border-bottom border-2 shadow-sm">
+                    <h4>Remove User</h4>
                 </div>
-                <div class="col-md-4 bg-danger-subtle ">
-                    Column
+                <div class="col-md-4 border-start border-bottom border-2">
+                    <h4>Update User Details</h4>
                 </div>
             </div>
         </div>

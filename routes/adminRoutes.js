@@ -8,7 +8,7 @@ router.get('/login', adminController.get_admin_login);
 router.post('/login', adminController.post_admin_login);
 router.get('/logout', adminController.put_admin_logout);
 router.get('/user-management',adminAuthenticate, adminController.get_admin_manageusers_page);
-router.post('/user-add');
+router.post('/user-add',adminAuthenticate, adminController.post_admin_adduser);
 router.delete('/user-remove/:user_id');
 router.get('/access-control',adminAuthenticate, adminController.get_admin_accesscontrol_page)
 router.get('/default-permissions');

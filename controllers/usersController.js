@@ -3,7 +3,7 @@ var usersModel = new UsersModel();
 
 const get_user_dashboard = (req, res) => {
     const user = req.user; // logic needed here.
-    res.render('dashboard', user);
+    res.render('dashboard');
 }
 
 const get_user_signin_page = (req, res)=>{
@@ -36,7 +36,7 @@ const  post_user_signin_g_callback = (req, res, next)=>{
         // CAN ADD THE googleid INTO OUR DB, IF email ALSO MATCHES, THEN:
         const userRegisterSuccess = usersModel.registerUser(user.googleid, user.email);
         if (userRegisterSuccess){
-            res.cookie('session-token', token, {httpOnly: true});
+            res.cookie('session-token', token, {httpOnly: true, maxAge: 2700000});
             res.redirect('/'); // continue to dashboard
         }
         else{

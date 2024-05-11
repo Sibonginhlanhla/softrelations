@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS users (
     roleName TEXT,
     FOREIGN KEY(roleName) REFERENCES roles(roleName)
 );
+
+ALTER TABLE users ADD COLUMN managerUserId INTEGER;

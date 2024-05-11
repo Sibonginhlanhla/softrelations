@@ -12,10 +12,13 @@ module.exports = class UsersModel{
         this.#db = new Database(DB_NAME);
         console.log("db connected, from UserModel");
     }
-    getUserDetails(_userId){
-        // make call to get specific user details
-        
-        return {name: "John"};
+    getUserDetails(_id){
+        let query = "SELECT * FROM users WHERE googleId=? OR userId=?";
+        const user = this.#db.prepare(query).get(_id, _id);
+        if (user){
+            return user;
+        }
+        return undefined;
     }
     registerUser(_user_g_id, _user_g_email){
         let query = "SELECT * FROM users WHERE email=?";

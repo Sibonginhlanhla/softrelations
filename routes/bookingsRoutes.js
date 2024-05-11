@@ -2,21 +2,23 @@ var express = require('express');
 var router = express.Router();
 
 const bookingsController = require('../controllers/bookingsController');
+const {userAuthenticate} = require('../middleware/userAuthenticate');
+const {userAccessControl} = require('../middleware/userAccessControl');
 
 // endpoints below
-router.get('/');
-router.get('/all', bookingsController.get_all_bookings);
-router.get('/meals/');
-router.get('/meals/:meal_id');
-router.get('/meals/options');
-router.post('/meals/options');
-router.delete('/meals/:meal_id');
-router.get('/car-wash/');
-router.get('/car-wash/available-slots');
-router.post('/car-wash/reservation/:slot_id');
-router.delete('/car-wash/reservation/:slot_id');
-router.post('/car-wash/slot');
-router.delete('/car-wash/slot/:slot_id');
+router.get('/', userAuthenticate, userAccessControl);
+router.get('/all', userAuthenticate, userAccessControl, bookingsController.get_all_bookings);
+router.get('/meals/', userAuthenticate, userAccessControl);
+router.get('/meals/:meal_id', userAuthenticate, userAccessControl);
+router.get('/meals/options', userAuthenticate, userAccessControl);
+router.post('/meals/options', userAuthenticate, userAccessControl);
+router.delete('/meals/:meal_id', userAuthenticate, userAccessControl);
+router.get('/car-wash/', userAuthenticate, userAccessControl);
+router.get('/car-wash/available-slots', userAuthenticate, userAccessControl);
+router.post('/car-wash/reservation/:slot_id', userAuthenticate, userAccessControl);
+router.delete('/car-wash/reservation/:slot_id', userAuthenticate, userAccessControl);
+router.post('/car-wash/slot', userAuthenticate, userAccessControl);
+router.delete('/car-wash/slot/:slot_id', userAuthenticate, userAccessControl);
 
 
 module.exports = router;

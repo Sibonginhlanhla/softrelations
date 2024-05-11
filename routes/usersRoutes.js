@@ -3,8 +3,9 @@ var router = express.Router();
 
 const usersController = require('../controllers/usersController');
 const {userAuthenticate} = require('../middleware/userAuthenticate');
+const {userAccessControl} = require('../middleware/userAccessControl');
 
-router.get('/', userAuthenticate, usersController.get_user_dashboard);
+router.get('/', userAuthenticate, userAccessControl, usersController.get_user_dashboard);
 router.get('/signin', usersController.get_user_signin_page);
 router.post('/signin', usersController.post_user_signin_g_callback);
 router.get('/signout', usersController.get_user_signout);

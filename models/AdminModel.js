@@ -40,10 +40,32 @@ module.exports = class AdminModel{
         
         return adminUsers;
     }
-    create_user(_firstname, _lastname, _email, _role){
-        // make db call
+    addUser(_firstname, _lastname, _email, _role){
+
+        let query = "SELECT * FROM users WHERE email=?";
+        const user = this.#db.prepare(query).get(_email);
+        
+        if (user!=undefined){ //exists
+            return {message: 'failed'};
+        }
+        // now add user
+        if (_role=='Manager'){
+            query = "INSERT INTO users (firstName, lastName, email, roleName) VALUES (?,?,?,?)";
+            const result = this.#db.prepare(query).run(_firstname, _lastname, _email, _role);
+        }
+        else{
+            // WILL ASSIGN RANDOM MANAGER NOW
+            query = "SELECT * FROM users WHERE roleName='Manager'";
+            const managers = this.#db.prepare(query).all();
+            const managerId = (managers[(Math.floor(Math.random() * managers.length))]).userId;
+
+            query = "INSERT INTO users (firstName, lastName, email, roleName, managerUserId) VALUES (?,?,?,?,?)";
+            const result = this.#db.prepare(query).run(_firstname, _lastname, _email, _role, managerId);
+        }
+
+        return {message: 'success'};
     }
-    get_all_users(){
+    getAllUsers(){
         // make db call
         // return user objects inside an array
     }

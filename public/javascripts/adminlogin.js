@@ -2,7 +2,7 @@
 function onLogIn(){
     const inputId = document.getElementById('inputId');
     const inputPassword = document.getElementById('inputPassword');
-    console.log(inputId);
+
     fetch('/admin/login', {
         method: 'POST',
         headers: {

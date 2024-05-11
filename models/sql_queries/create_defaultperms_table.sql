@@ -4,3 +4,5 @@ CREATE TABLE IF NOT EXISTS defaultpermissions(
     roleName TEXT,
     FOREIGN KEY(roleName) REFERENCES roles(roleName)
 );
+
+ALTER TABLE defaultpermissions ADD COLUMN httpMethod TEXT NOT NULL;

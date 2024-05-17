@@ -2,6 +2,9 @@ const {OAuth2Client} = require('google-auth-library');
 const {CLIENT_ID} = require('../utils/authConstants');
 const client = new OAuth2Client(CLIENT_ID);
 
+const UsersModel = require("../models/UsersModel");
+var usersModel = new UsersModel();
+
 const userAuthenticate = function(req, res, next){
 
     const token = req.cookies['session-token'];
@@ -20,8 +23,16 @@ const userAuthenticate = function(req, res, next){
     }
     verify()
     .then(()=>{
-        req.user = user; // pass the user info to next middleware
-        next();
+        // check if user has account(googleId still in db)
+        const _user = usersModel.getUserDetails(user.googleid);
+        if (!_user){ // no googleId
+            // clear session cookie
+            res.clearCookie('session-token');
+            res.redirect('/signin');
+        }else{
+            req.user = user; // pass the user(g_id & email) info to next middleware
+            next();
+        }
     })
     .catch(()=>{
         res.redirect('/signin');

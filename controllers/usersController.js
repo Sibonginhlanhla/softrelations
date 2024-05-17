@@ -2,7 +2,8 @@ const UsersModel = require("../models/UsersModel");
 var usersModel = new UsersModel();
 
 const get_user_dashboard = (req, res) => {
-    const user = req.user; // logic needed here.
+    const user = req.user;
+    res.locals.user = user;
     res.render('dashboard');
 }
 

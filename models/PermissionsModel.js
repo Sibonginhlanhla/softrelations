@@ -12,5 +12,17 @@ module.exports = class PermissionsModel{
         this.#db = new Database(DB_NAME);
         console.log("db connected, from PermissionsModel");
     }
-    
+    /**
+     * Returns true if user has permission to access endpoint
+     */
+    hasEndpointPermission(_userId, _role, _url, _method){
+        let query = "SELECT * FROM defaultpermissions WHERE apiPathSubDir=? AND roleName=? AND httpMethod=?";
+
+        query = "SELECT * FROM newpermissions INNER JOIN defaultpermissions ON ";
+
+        query = ""
+        //const user = this.#db.prepare(query).get(_id, _id);
+
+        return true;
+    }
 }

@@ -2,7 +2,7 @@
 <!-- Nav (user)-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand border border-1 border-light-subtle text-light d-block d-md-none px-1" href="#">
+      <a class="navbar-brand border border-1 border-light-subtle text-light d-block d-md-none px-1" href="/profile">
         <%= user.firstName.slice(0,1)+"."+user.lastName %>
       </a>
       <button class="navbar-toggler rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
             <a class="nav-link" href="/signout">Sign Out</a>
           </li>
           <li>
-            <a class="nav-link border border-1 border-light-subtle text-light d-none d-md-block ms-2 " href="#"><%= user.firstName.slice(0,1)+"."+user.lastName %></a>
+            <a class="nav-link border border-1 border-light-subtle text-light d-none d-md-block ms-2 " href="/profile"><%= user.firstName.slice(0,1)+"."+user.lastName %></a>
           </li>
         </ul>
       </div>

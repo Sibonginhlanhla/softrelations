@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/main.js"></script>
+    
+    <%- include('./partials/bootstrap') %>
+    <%- include('./partials/googleicons') %>
+</head>
+<body>
+    <!-- Nav -->
+    <%- include('./partials/usernav') %>
+    <!-- Main content here -->
+    <main class="m-1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-md-6 shadow-sm border-1 border-bottom ">
+                    <div class="text-center ">
+                        <img src="/images/person_24dp.svg" alt="Profile"
+                        style="width: 60px;height: 60px;"
+                        >
+                        <h5><%- user.firstName +" "+user.lastName %></h5>
+                    </div>
+                    <br>
+                    <h6>role: <%- user.roleName %></h6>
+                    <h6>email: <%- user.email %></h6>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

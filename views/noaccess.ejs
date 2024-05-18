@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,20 @@
     <%- include('./partials/bootstrap') %>
 
 </head>
-    <body>
-        <div class="d-flex justify-content-center align-items-center vh-100">
-            <div class="text-center shadow-lg w-75 text-wrap p-3 py-4 bg-warning-subtle ">
-                <h1>Sorry, you don't have access to this resource</h1>
-                <button onclick="gohome()" class="btn btn-dark w-50 my-4">Go To Dashboard</button>
+
+<body class="bg-warning-subtle ">
+    <!-- Nav -->
+        <div class="d-flex justify-content-center align-items-center vh-100 vw-100">
+            <div class="text-center shadow-lg w-75 text-wrap p-3 py-4 bg-white">
+                <h3>Sorry, you don't have access to this URL/resource</h3>
+                <button onclick="gohome()" class="btn btn-dark w-50 my-4">Dashboard</button>
             </div>
         </div>
         <script>
-            function gohome(){
+            function gohome() {
                 location.assign('/');
             }
         </script>
-    </body>
+</body>
+
 </html>

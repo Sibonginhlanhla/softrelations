@@ -15,7 +15,7 @@ function onLogIn(){
     }).then(response => response.json())
         .then(response => {
             if(response.message=="success"){
-                location.assign('/admin')
+                location.assign('/admin');
             }else if(response.message=="failed"){
                 inputId.value ='';
                 inputPassword.value='';

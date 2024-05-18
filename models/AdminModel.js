@@ -24,6 +24,8 @@ module.exports = class AdminModel{
         // check details against db id & password
         const query = "SELECT * FROM admin WHERE adminId=? AND password=?";
         const adminuser = this.#db.prepare(query).get(adminId, passwordHash);
+        const idd = adminuser.adminId;
+        console.log(idd);
         if (adminuser){
             return true;
         }

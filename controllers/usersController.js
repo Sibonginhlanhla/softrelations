@@ -2,7 +2,8 @@ const UsersModel = require("../models/UsersModel");
 var usersModel = new UsersModel();
 
 const get_user_dashboard = (req, res) => {
-    const user = req.user; // logic needed here.
+    const user = req.user;
+    res.locals.user = user;
     res.render('dashboard');
 }
 
@@ -54,9 +55,21 @@ const get_user_signout = (req, res)=>{
     res.redirect('/signin');
 }
 
+const get_user_profilepage = (req, res)=>{
+    // user object passed from AccessControl(authorization)
+    // delete the googleId property
+    const user = req.user;
+    delete user.googleId;
+    
+    res.locals.user = user;
+
+    res.render('userprofile');
+}
+
 module.exports = {
     get_user_dashboard,
     get_user_signin_page,
     post_user_signin_g_callback,
-    get_user_signout
+    get_user_signout,
+    get_user_profilepage
 }

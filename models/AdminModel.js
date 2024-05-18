@@ -37,10 +37,10 @@ module.exports = class AdminModel{
      */
     getAdminDetails(_adminId){
 
-        const query = "SELECT * FROM admin";
-        const adminUsers = this.#db.prepare(query).all();
+        const query = "SELECT * FROM admin WHERE adminId=?";
+        const adminUser = this.#db.prepare(query).get(_adminId);
         
-        return adminUsers;
+        return adminUser;
     }
     addUser(_firstname, _lastname, _email, _role){
 
@@ -48,7 +48,7 @@ module.exports = class AdminModel{
         const user = this.#db.prepare(query).get(_email);
         
         if (user!=undefined){ //exists
-            return {message: 'failed'};
+            return false;
         }
         // now add user
         if (_role=='Manager'){
@@ -65,11 +65,28 @@ module.exports = class AdminModel{
             const result = this.#db.prepare(query).run(_firstname, _lastname, _email, _role, managerId);
         }
 
-        return {message: 'success'};
+        return true;
+    }
+    removeUser(_userId){
+        let query = "UPDATE users SET googleId=NULL, WHERE userId=?";
+        const result = this.#db.prepare(query).run(_userId);
+        if (result){
+            return true;
+        }
+        return false;
+    }
+    updateUser(_firstname, _lastname, _email, _role, _userId){
+        let query = "UPDATE users SET firstName=?, lastName=?, email=?, roleName=? WHERE userId=?";
+        const result = this.#db.prepare(query).run(_firstname, _lastname, _email, _role, _userId);
+        if (result){
+            return true;
+        }
+        return false;
     }
     getAllUsers(){
-        // make db call
-        // return user objects inside an array
+        let query = "SELECT * FROM users";
+        const users = this.#db.prepare(query).all();
+        return users;
     }
     addDefaultPermission(_userId, _role, _permissionName, _apiSubDirPath){
         // eg "view-all-timesheets" <=> "/timesheets/view/"

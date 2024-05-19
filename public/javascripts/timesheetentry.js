@@ -22,7 +22,7 @@ function onEntry(){
         .then(response => {
             if(response.message=="success"){
                 alert("Talk about dedication! Task successfully added.");
-                //console.log(response);
+                console.log(response);
                 //location.assign('/dashboard')
             }else if(response.message=="failed"){
                 task ='';

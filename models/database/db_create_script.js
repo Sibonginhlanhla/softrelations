@@ -39,6 +39,8 @@ function createTables(_db){
                 FOREIGN KEY(permission) REFERENCES defaultpermissions(permission),
                 FOREIGN KEY(userId) REFERENCES users(userID)
             );
+
+
         `,()=>{
             console.log("successful creating tables");
             // populate them (i.e. admin table for now, he has to login)

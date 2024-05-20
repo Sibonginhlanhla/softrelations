@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS bookings(
-    fulfilledFlag BOOLEAN NOT NULL DEFAULT 0, -- 1 if fullfilled
-    bookingId INTEGER,
-    bookedBy INTEGER,
-    FOREIGN KEY(bookingId) REFERENCES bookingoptions(bookingId),
-    FOREIGN KEY(bookedBy) REFERENCES users(userId)
+CREATE TABLE IF NOT EXISTS bookings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    carwash_slot TEXT NOT NULL,
+    meal TEXT NOT NULL,
+    user INTEGER NOT NULL,
+    created_at TEXT NOT NULL
 );

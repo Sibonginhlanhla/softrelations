@@ -7,6 +7,7 @@ const {userAccessControl} = require('../middleware/userAccessControl');
 
 // endpoints below
 router.get('/', userAuthenticate, userAccessControl);
+router.get('/create', userAuthenticate, userAccessControl, bookingsController.get_bookings_page);
 router.get('/all', userAuthenticate, userAccessControl, bookingsController.get_all_bookings);
 router.get('/meals/', userAuthenticate, userAccessControl);
 router.get('/meals/:meal_id', userAuthenticate, userAccessControl);

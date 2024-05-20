@@ -37,6 +37,7 @@ const userAuthenticate = function(req, res, next){
     .catch(()=>{
         res.redirect('/signin');
     });
+    
 }
 
 

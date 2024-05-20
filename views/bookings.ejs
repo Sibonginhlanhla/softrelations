@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/main.js"></script>
+
+    <%- include('./partials/bootstrap') %>
+
+    <style>
+        /* Additional styles for event_booking.ejs */
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        form label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        form button {
+            margin-top: 10px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #005F6B;
+        }
+
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #prompt {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #prompt button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Nav -->
+    <%- include('./partials/usernav') %>
+    <header>
+        <h1>Event Booking</h1>
+    </header>
+ 
+    <main>
+        <h2>Book Lunch or Carwash</h2>
+        <form id="bookingForm" action="/book_event" method="POST">
+            <h3>Car Wash Slots</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Time Slot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="radio" name="carwash_slot" value="9-10am Monday"></td>
+                        <td>Monday (9:00 AM - 10:00 AM) </td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="carwash_slot" value="10-11am Wednesday"></td>
+                        <td>Wednesday (10:00 AM - 11:00 AM) </td>
+                    </tr>
+                    <!--slots as needed -->
+                </tbody>
+            </table>
+
+            <h3>Available Meals</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Meal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="radio" name="meal" value="Full Meal"></td>
+                        <td>Full chicken and Starch(Pap, Rice, Samp or Dombolo)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="meal" value="Non-Vegetarian"></td>
+                        <td>Quarter Chicken and Starch(Pap, Rice, Samp or Dombolo)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="meal" value="Vegan"></td>
+                        <td>Vegan</td>
+                    </tr>
+                    <!-- Add more meals as needed -->
+                </tbody>
+            </table>
+
+            <button type="submit">Book</button>
+        </form>
+
+        <div id="prompt">
+            <p>Would you like to do another order?</p>
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Staff Relations Website</p>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Simulate a successful form submission
+            setTimeout(function() {
+                // Hide the form and show the prompt
+                document.getElementById('bookingForm').style.display = 'none';
+                document.getElementById('prompt').style.display = 'block';
+            }, 500);
+        });
+
+        document.getElementById('yesButton').addEventListener('click', function() {
+            // Reset the form and show it again
+            document.getElementById('bookingForm').reset();
+            document.getElementById('bookingForm').style.display = 'block';
+            document.getElementById('prompt').style.display = 'none';
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            // Redirect to the Dashboard page
+            window.location.href = '/dashboard';
+        });
+    </script>
+    
+</body>
+</html>

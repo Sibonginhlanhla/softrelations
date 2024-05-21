@@ -8,11 +8,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <div class="d-flex align-items-center justify-content-center flex-column bg-body-secondary vh-100   ">
-      <div class="text-center p-3 shadow-lg  ">
+    <div class="d-flex align-items-center justify-content-center flex-column bg-body-secondary vh-100 ">
+      <div class="text-center p-3 shadow-sm">
         <h2>SoftRelations User Sign In</h2>
       </div>
-      <br>
       <br>
       <script src="https://accounts.google.com/gsi/client" async></script>
       <div id="g_id_onload"
@@ -27,7 +26,14 @@
           data-text="sign_in_with"
           data-shape="rectangular"
           data-logo_alignment="left">
+      </div>
+      <br>
+      <h4>Or</h4>
+      <br>
+      <button class="btn btn-outline-dark rounded-1"
+              onclick="location.assign('/admin')">Continue as admin</button>
     </div>
+
     <footer class="fixed-bottom me-auto ms-1 mb-0 ">
       <p>&copy;SoftRelations User Portal 2024.<small> by group 24</small></p>
     </footer>

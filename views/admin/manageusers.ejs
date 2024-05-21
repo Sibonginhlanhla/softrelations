@@ -34,14 +34,12 @@
                             <label for="emailInput">Email address</label>
                             <input type="email" class="form-control rounded-0" id="emailInput" placeholder="name@example.com">
                         </div>
-                        <div class="form-group">
                             <label for="roleSelectInput">Select user role</label>
-                            <select class="form-control rounded-0" id="roleSelectInput">
+                            <select class="form-select rounded-0" id="roleSelectInput">
                                 <option value="HR">HR</option>
                                 <option value="Manager">Manager</option>
                                 <option value="Staff">Staff</option>
                             </select>
-                        </div>
                     </form>
                     <button class="btn btn-success my-3 w-50 rounded-0" onclick="onAddUser()">Add user</button>
                 </div>
@@ -50,26 +48,22 @@
                     <h4>Remove User</h4>
                     <p>Silently delete user account, not user data.</p>
                     <p>Select user here</p>
-                    <div class="form-group">
                         <label for="userSelectDeleteInput">Who to kick out?</label>
-                        <select class="form-control rounded-0" id="userSelectDeleteInput">
+                        <select class="form-select rounded-0" id="userSelectDeleteInput">
                             <!-- <option>John_Doe_HR_john.doe@google.com_89481</option> -->
                             <%- select_template %>
                         </select>
-                    </div>
                     <button class="btn btn-danger my-3 w-50 rounded-0" onclick="onRemoveUser()">Remove</button>
                 </div>
                 <!-- Update User -->
-                <div class="col-md-4 border-start border-bottom border-2 mt-4 mt-md-0">
+                <div class="col-md-4 border border-2 mt-4 mt-md-0">
                     <h4>Update User Details</h4>
                     <p>Edit the fields to be updated, otherwise skip the field.</p>
                     <p>Select user here</p>
-                    <div class="form-group">
-                        <select class="form-control rounded-0" id="userSelectUpdateInput" onchange="populateUpdateFields()">
+                        <select class="form-select rounded-0" id="userSelectUpdateInput" onchange="populateUpdateFields()">
                             <!-- <option>John_Doe_HR_john.doe@google.com_89481</option> -->
                             <%- select_template %>
                         </select>
-                    </div>
                     <form>
                         <div class="form-group">
                             <label for="firstNameUpdateInput">First name</label>
@@ -83,14 +77,12 @@
                             <label for="emailUpdateInput">Email address</label>
                             <input type="email" class="form-control rounded-0" id="emailUpdateInput" placeholder="name@example.com">
                         </div>
-                        <div class="form-group">
                             <label for="roleSelectUpdateInput">Select user role</label>
-                            <select class="form-control rounded-0" id="roleSelectUpdateInput">
+                            <select class="form-select rounded-0" id="roleSelectUpdateInput">
                                 <option value="HR">HR</option>
                                 <option value="Manager">Manager</option>
                                 <option value="Staff">Staff</option>
                             </select>
-                        </div>
                     </form>
                     <button class="btn btn-warning my-3 w-50 rounded-0" onclick="onUpdateUser()">Update</button>
                 </div>

@@ -1,11 +1,16 @@
 const AdminModel = require("../models/AdminModel");
+const PermissionsModel = require('../models/PermissionsModel');
+const UsersModel = require('../models/UsersModel');
 const md5 = require('md5'); // to hash password before logging admin in
 const {createToken} = require('../utils/jwt-tokenizer');
 var adminModel = new AdminModel();
+var permissionsModel = new PermissionsModel(); 
+var usersModel = new UsersModel();
 
 const get_admin_dashboard = (req, res)=>{
     // implementation needed
-    res.render('admin/index')
+    // res.render('admin/index')
+    res.redirect('/admin/user-management')
 }
 
 const get_admin_login = (req, res)=>{
@@ -51,6 +56,20 @@ const get_admin_manageusers_page = (req, res)=>{
 }
 
 const get_admin_accesscontrol_page = (req, res)=>{
+    const users = adminModel.getAllUsers();
+
+    // populate form select
+    let select_template = "";
+    users.forEach(user=>{
+        select_template += `
+            <option>
+            ${user.firstName+"_"+user.lastName+"_"+user.roleName+"_"+user.email+"_"+user.userId}
+            </option>
+        `
+    });
+
+    //pass templates/data to ejs
+    res.locals.select_template = select_template;
     res.render('admin/accesscontrol');
 }
 
@@ -104,6 +123,42 @@ const put_admin_updateuser = (req, res)=>{
     }
 }
 
+const get_user_permissions = (req, res)=>{
+    const userId = req.body.userId;
+    const role = usersModel.getUserDetails(userId).roleName;
+    //collect permissions
+    let userPermissions = {
+        isBlocked: permissionsModel.isUserBlocked(userId),
+        grantedPermissions: permissionsModel.userGrantedPermissions(userId, role),
+        permissionsToGrant: permissionsModel.userToBeGrantedPermissions(userId, role)
+    };
+
+    res.json(userPermissions);
+}
+
+const put_user_permissions = (req, res)=>{
+    const userId = req.body.userId;
+    const buttonValue = req.body.buttonValue;
+    const buttonText = req.body.buttonText;
+
+    // block
+    if (buttonValue=='Block' || buttonValue=='Allow'){
+        const blockFlag = buttonValue=='Block' ? 1 : 0;
+        if (!permissionsModel.blockUser(userId, blockFlag)){
+            res.json({message: "failed"});
+            return;
+        }
+    }else if(buttonText=='Revoke' || buttonText=='Grant'){
+        const revokeFlag = buttonText=='Revoke' ? 1 : 0;
+        if (!permissionsModel.changeUserPermission(userId, revokeFlag, buttonValue)){
+            res.json({message: "failed"});
+            return;
+        }
+    }
+
+    res.json({message: "success"})
+}
+
 module.exports = {
     get_admin_dashboard,
     get_admin_login,
@@ -113,5 +168,7 @@ module.exports = {
     put_admin_logout,
     post_admin_adduser,
     delete_admin_removeuser,
-    put_admin_updateuser
+    put_admin_updateuser,
+    get_user_permissions,
+    put_user_permissions
 }

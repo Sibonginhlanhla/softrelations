@@ -12,9 +12,11 @@ router.post('/user-add',adminAuthenticate, adminController.post_admin_adduser);
 router.delete('/user-remove/:user_id', adminAuthenticate, adminController.delete_admin_removeuser);
 router.put('/user-update', adminAuthenticate, adminController.put_admin_updateuser);
 router.get('/access-control',adminAuthenticate, adminController.get_admin_accesscontrol_page);
-router.get('/default-permissions');
-router.post('/default-permissions');
-router.get('/added-permissions');
-router.post('/added-permissions');
+router.post('/user-permissions', adminAuthenticate, adminController.get_user_permissions);
+router.put('/user-permissions', adminAuthenticate, adminController.put_user_permissions);
+router.get('/default-permissions'); // reserved
+router.post('/default-permissions'); // reserved
+router.get('/added-permissions'); // reserved
+router.post('/added-permissions'); // reserved
 
 module.exports = router;

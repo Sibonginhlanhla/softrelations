@@ -25,8 +25,9 @@ const userAccessControl = (req, res, next)=>{
         );
 
         if (allowed){
+            // available to any authorized endpoint 
             req.user = user;
-            res.locals.user = user; // available to any authorized endpoint 
+            res.locals.user = user;
             next();
             return;
         }else{

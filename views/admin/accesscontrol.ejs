@@ -7,6 +7,7 @@
     <title>SoftRelations Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <script src="/javascripts/main.js"></script>
+    <script src="/javascripts/accesscontrol.js"></script>
     
     <%- include('../partials/bootstrap') %>
 </head>
@@ -18,12 +19,33 @@
     <div class="container-fluid mt-2">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 bg-primary-subtle">
-                    Column
+                <div class="col-12 text-center mb-2 pb-2 sticky-top bg-light  shadow-sm">
+                    <h4>Manage access for:</h4>
+                    <select class="form-select rounded-0" id="selectUserInput" onchange="populateFieldsAndUI()">
+                        <%- select_template %>
+                    </select>
                 </div>
-                <div class="col-md-6 bg-secondary-subtle ">
-                    Column
+                <div class="col-md-4 border border-1 mt-2 mt-md-0 pb-3 " id="userBlockDiv">
+                    <h5>Access Grants</h5>
+                    Allow/block user access to the site 
+                    <br>
+                    <button class=""
+                            id="blockButton" onclick="onButtonPress(this)">
+                        Block access to site</button>
                 </div>
+                <div class="col-md-4 border border-1 mt-1 mt-md-0">
+                    <h5>Active (special) permissions list</h5>
+                    <div id="revokePermissionList">
+
+                    </div>
+                </div>
+                <div class="col-md-4 border border-1 mt-2 mt-md-0">
+                    <h5>Grant (special) Permissions</h5>
+                    <div id="grantPermissionList">
+                        
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <script src="/javascripts/main.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('./partials/bootstrap') %>
+</head>
+<body>
+    <%- include('./partials/usernav') %>
+    <div class="container">
+        <h1 class="mt-5">Feedbacks</h1>
+        <form>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <select class="form-control" id="rating" name="rating">
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5">5</option>
+                   <option value="6">6</option>
+                   <option value="7">7</option>
+                   <option value="8">8</option>
+                   <option value="9">9</option>
+                   <option value="10">10</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comments:</label>
+                <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+            </div>
+            <div>
+                <label for="selectUserInput">Feedback Recipient Email</label>
+                <!--<input onclick="onSenda()" type="email" id="email" name="email" placeholder="example@gmail.com" required-->
+                <select class="form-select rounded-0" id="selectUserInput">
+                    <%- select_template %>
+                </select>
+            </div>
+            <button onclick="onSenda()" type="button" class="btn btn-primary">Submit</button>
+            <button onclick="viewFeedbacks()" type="button" class="btn btn-secondary">Sent Feedbacks</button>
+            <button onclick="checkFeedbacks()" type="button" class="btn btn-secondary">Received Feedbacks</button>
+            <button onclick="requestFeedbacks()" type="button" class="btn btn-secondary">Request Feedback (HR only)</button>
+        </form>
+    </div>
+    <script src="/javascripts/feebackdetails.js"></script>
+</body>
+</html>

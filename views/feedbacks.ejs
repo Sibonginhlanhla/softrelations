@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
     <script src="/javascripts/main.js"></script>
-    <script src="/javascripts/feebackdetails.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <%- include('./partials/bootstrap') %>
 </head>
 <body>
     <%- include('./partials/usernav') %>
     <div class="container">
-        <h1 class="mt-5">Feedback</h1>
+        <h1 class="mt-5">Feedbacks</h1>
         <form>
             <div class="form-group">
                 <label for="rating">Rating:</label>
@@ -34,14 +33,18 @@
                 <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
             </div>
             <div>
-                <label for="email">Feedback Recipient Email</label>
+                <label for="selectUserInput">Feedback Recipient Email</label>
                 <!--<input onclick="onSenda()" type="email" id="email" name="email" placeholder="example@gmail.com" required-->
                 <select class="form-select rounded-0" id="selectUserInput">
                     <%- select_template %>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button onclick="onSenda()" type="button" class="btn btn-primary">Submit</button>
+            <button onclick="viewFeedbacks()" type="button" class="btn btn-secondary">Sent Feedbacks</button>
+            <button onclick="checkFeedbacks()" type="button" class="btn btn-secondary">Received Feedbacks</button>
+            <button onclick="requestFeedbacks()" type="button" class="btn btn-secondary">Request Feedback (HR only)</button>
         </form>
     </div>
+    <script src="/javascripts/feebackdetails.js"></script>
 </body>
 </html>

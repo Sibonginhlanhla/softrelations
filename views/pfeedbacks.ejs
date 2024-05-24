@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback List</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/main.js"></script>
+    <script>
+    function goBack() {
+        window.location.href = '/feedback/create';
+    }
+    </script>
+    <style>
+        /* Additional styles for timesheets.ejs */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #444;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <%- include('./partials/bootstrap') %>
+</head>
+<body>
+    <%- include('./partials/usernav') %>
+    <div class="container">
+        <h1 class="mt-5">My Sent Feedbacks</h1>
+        <button onclick="goBack()" type="button" class="btn btn-secondary mb-3">Back</button>
+        <table id="feedbackTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                    <th>To</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="/javascripts/feebackdetails.js"></script>
+    <script src="/javascripts/feedbacks.js"></script>
+</body>
+</html>

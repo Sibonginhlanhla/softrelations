@@ -9,8 +9,8 @@ const {userAccessControl} = require('../middleware/userAccessControl');
 router.get('/', userAuthenticate, userAccessControl);
 router.get('/listing', userAuthenticate, userAccessControl);
 router.get('/:feedback_id', userAuthenticate, userAccessControl);
-router.get('/create', userAuthenticate, userAccessControl);
-router.post('/create', userAuthenticate, userAccessControl);
+router.get('/create', userAuthenticate, userAccessControl, feedbackController.get_user_feedbackpage);
+router.post('/createentry', userAuthenticate, userAccessControl, feedbackController.post_user_feedback);
 router.get('/posted', userAuthenticate, userAccessControl);
 router.post('/feedback-request', userAuthenticate, userAccessControl);
 

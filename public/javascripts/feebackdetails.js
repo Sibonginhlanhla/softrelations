@@ -129,3 +129,21 @@ function requestFeedbacks() {
             alert("Please type in request details");
         });
 }
+
+function fetchFeedbacks() {
+    fetch('/feedback/listingthree')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(apiJsonData => {
+            console.log("Fetched feedbacks:", apiJsonData);
+            localStorage.setItem('feedbacks', JSON.stringify(apiJsonData));
+            window.location.href = '/feedback/postedthree';
+        })
+        .catch(error => {
+            console.error('Error fetching feedbacks:', error);
+        });
+}

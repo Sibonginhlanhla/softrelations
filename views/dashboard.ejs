@@ -6,6 +6,7 @@
     <title>Staff Dashboard</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="/javascripts/main.js"></script>
+    <script src="/javascripts/feebackdetails.js"></script>
     
     <%- include('./partials/bootstrap') %>
   </style>
@@ -19,18 +20,23 @@
         <!-- Add overview content here -->
         <div class="container container-fluid text-center p-1">
             <div class="row">
-              <div class="col-12 col-lg-6 border">
-                <h4 class=""></h4>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, molestias.
-              </div>
-              <div class="col-12 col-lg-6 border">
-                <h4 class="">Bookings</h4>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, consequuntur!
+              <div class="col-12 border m-2">
+                <a href="#" onclick="fetchFeedbacks()" class="clickable-div">
+                  <h4>Feedback History</h4>
+                  Performance feedback history for staff
+                </a>
               </div>
             </div>
             <div class="row">
               <div class="col-12 border m-2">
-                <!-- Make this div clickable -->
+                <a href="" class="clickable-div">
+                  <h4 class="">Bookings</h4>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, consequuntur!
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 border m-2">
                 <a href="/timesheets/create" class="clickable-div">
                   <h4 class="">Timesheets/Tasks</h4>
                   Click Here To View Your Timesheets.

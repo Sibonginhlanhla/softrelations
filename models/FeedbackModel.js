@@ -11,7 +11,7 @@ module.exports = class FeedbackModel{
     constructor(){
         this.#db = new Database(DB_NAME);
         console.log("db connected, from FeedbackModel");
-        console.log(this.#db.prepare('SELECT * FROM feedback').all());
+        //console.log(this.#db.prepare('SELECT * FROM feedback').all());
     }
     
     postFeeback(rate,comment,from,to){
@@ -37,6 +37,12 @@ module.exports = class FeedbackModel{
     getUserFeedBacksTo(userEmail){
         const query = "SELECT rating,comments,createdBy FROM feedback WHERE feedbackTo=?";
         const result = this.#db.prepare(query).all(userEmail);
+        return result;
+    }
+
+    getUserFeedBacksThree(){
+        const query = "SELECT rating,comments,createdBy, feedbackTo FROM feedback";
+        const result = this.#db.prepare(query).all();
         return result;
     }
 

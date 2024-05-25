@@ -57,12 +57,25 @@ const get_user_feedback_to = (req, res) => {
     }
 }
 
+const get_user_feedback_three = (req, res) => {
+    try {
+        const feddbacks = feedbackModel.getUserFeedBacksThree();
+        res.json(feddbacks);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 const get_user_pfeedbacks = (req, res) => {
     res.render('pfeedbacks');
 }
 
 const get_user_pfeedbacks_two = (req, res) => {
     res.render('pfeedbacks2');
+}
+
+const get_user_pfeedbacks_three = (req, res) => {
+    res.render('pfeedbacks3');
 }
 
 const get_user_role = (req, res) => {
@@ -82,5 +95,7 @@ module.exports = {
     get_user_pfeedbacks,
     get_user_feedback_to,
     get_user_pfeedbacks_two,
-    get_user_role
+    get_user_role,
+    get_user_pfeedbacks_three,
+    get_user_feedback_three
 }

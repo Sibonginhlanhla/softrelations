@@ -12,19 +12,24 @@ module.exports = class BookingsModel {
         console.log("db connected, from BookingsModel");
     }
 
-    // Method to create a new booking
-    create(bookingData) {
-        const stmt = this.#db.prepare(
-            'INSERT INTO bookings (carwash_slot, meal, user, created_at) VALUES (?, ?, ?, ?)'
-        );
-        const info = stmt.run(
-            bookingData.carwash_slot,
-            bookingData.meal,
-            bookingData.user,
-            bookingData.created_at
-        );
-        return info.lastInsertRowid;
+    addBooking(user, bookingType, bookingDescription, date) {
+        const query = "INSERT INTO bookingoptions (bookingType, bookingDescription, availabilityDateTime, bookedBy) VALUES (?, ?, ?, ?)";
+        const result = this.#db.prepare(query).run(bookingType, bookingDescription, date, user);
+        console.log(this.#db.prepare('SELECT * FROM bookingoptions').all());
+        return {message: 'success'};
+        
     }
+    
+    
+    
+    
+    
+    getUserBookings(userId) {
+        let query = "SELECT bookedBy, bookingType, bookingDescription, availabilityDateTime FROM bookingoptions WHERE bookedBy=?";
+        const result = this.#db.prepare(query).all(userId);
+        return result;
+    }
+    
 
     // Add other methods as needed
 };

@@ -5,35 +5,48 @@ const get_all_bookings = (req, res) => {
     res.json({ data: "All bookings" });
 };
 
-const get_bookings_page = (req, res) => {
+/*const get_bookings_page = (req, res) => {
     res.render('bookings');
-};
+};*/
 
-const book_event = (req, res) => {
-    const { carwash_slot, meal } = req.body;
+const get_bookings_page =(req, res, next)=>{
+    const user = req.user;
+    res.locals.user = user;
+    res.render('bookings');
+}
+
+const post_user_bookings = (req, res) => {
+    const bookingType = req.body.bookingType;
+    const bookingDescription = req.body.bookingDescription;
+    const date = req.body.date;
+    const user = req.user.userId;
 
     try {
-        // Create a new booking object
-        const newBooking = {
-            carwash_slot,
-            meal,
-            user: req.user.id, // Assuming you have user info in req.user
-            created_at: new Date().toISOString()
-        };
-
-        // Save the booking to the database
-        bookingsModel.create(newBooking);
-
-        // Send a success response
-        res.json({ success: true, message: "Booking successful" });
+        const response = bookingsModel.addBooking(user, bookingType, bookingDescription, date);
+        res.json(response);
     } catch (error) {
-        console.error('Error booking event:', error);
-        res.status(500).json({ success: false, message: 'Internal Server Error' });
+        console.log(error); // Log error for debugging
+        res.status(500).json({ message: 'Something went wrong, please try again' });
     }
-};
+}
+
+
+const get_user_bookings = (req, res) => {
+    const userID = req.user.userId;
+    try {
+        console.log('Fetching bookings for user:', userID); // Debugging line
+        const booking = bookingsModel.getUserBookings(userID);
+        res.json(booking);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+
 
 module.exports = {
     get_all_bookings,
     get_bookings_page,
-    book_event
+    post_user_bookings,
+    get_user_bookings
 };

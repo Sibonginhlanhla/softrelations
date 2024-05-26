@@ -2,6 +2,11 @@ body {
   padding: 0;
   margin: 0;
   font-family: Arial, "Lucida Grande", Helvetica, sans-serif;
+  background-image: url('/images/dark.jpg');
+  background-size: cover; /* Ensure the image covers the whole background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-attachment: fixed;
 }
 
 a {
@@ -11,3 +16,5 @@ a {
 li{
   list-style: none;
 }
+
+

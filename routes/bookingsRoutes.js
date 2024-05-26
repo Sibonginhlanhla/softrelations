@@ -9,6 +9,8 @@ const { userAccessControl } = require('../middleware/userAccessControl');
 router.get('/', userAuthenticate, userAccessControl);
 router.get('/create', userAuthenticate, userAccessControl, bookingsController.get_bookings_page);
 router.get('/all', userAuthenticate, userAccessControl, bookingsController.get_all_bookings);
+router.get('/listing', userAuthenticate, userAccessControl, bookingsController.get_user_bookings);
+router.post('/createentry', userAuthenticate, userAccessControl, bookingsController.post_user_bookings);
 router.get('/meals/', userAuthenticate, userAccessControl);
 router.get('/meals/:meal_id', userAuthenticate, userAccessControl);
 router.get('/meals/options', userAuthenticate, userAccessControl);
@@ -20,8 +22,5 @@ router.post('/car-wash/reservation/:slot_id', userAuthenticate, userAccessContro
 router.delete('/car-wash/reservation/:slot_id', userAuthenticate, userAccessControl);
 router.post('/car-wash/slot', userAuthenticate, userAccessControl);
 router.delete('/car-wash/slot/:slot_id', userAuthenticate, userAccessControl);
-
-// New endpoint for booking events
-router.post('/book_event', userAuthenticate, userAccessControl, bookingsController.book_event);
 
 module.exports = router;
